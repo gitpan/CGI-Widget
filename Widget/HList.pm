@@ -78,10 +78,7 @@ sub node {
 
 sub html {
 		my ($self,@args) = @_;
-		unless(ref $self){
-			unshift @args,$self;
-			$self = __PACKAGE__->new(@args) unless ref $self;
-		}
+		$self = __PACKAGE__->new(@args) unless ref $self;
 		return $self->ashtml(@_);
 }
 

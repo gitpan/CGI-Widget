@@ -32,11 +32,7 @@ sub _init {
 sub html {
   my ($self,@args) = @_;
 
-  #nice one from Slaven Rezic
-  unless(ref $self){
-    unshift @args,$self;
-    $self = __PACKAGE__->new(@args) unless ref $self;
-  }
+  $self = __PACKAGE__->new(@args) unless ref $self;
 
   my $return = '';
   for my $i (1..$self->length){

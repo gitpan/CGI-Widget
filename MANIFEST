@@ -4,6 +4,7 @@ MANIFEST
 README
 Widget.pm
 Widget/HList.pm
+Widget/HList/Node.pm
 Widget/Series.pm
 t/Series.t
 t/HList.t
