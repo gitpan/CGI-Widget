@@ -1,0 +1,9 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+Widget.pm
+Widget/Series.pm
+t/t.t
+t/test.pl
+t/green.gif

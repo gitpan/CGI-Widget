@@ -1,0 +1,6 @@
+Revision history for Perl extension CGI::Widget.
+
+0.01  Sun Dec 16 15:24:53 2001
+	- original version; created by h2xs 1.21 with options
+		-X -n CGI::Widget
+
