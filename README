@@ -20,7 +20,7 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  None.
+  Tree::DAG_Node (for HList classes)
 
 COPYRIGHT AND LICENCE
 
