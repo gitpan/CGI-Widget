@@ -8,3 +8,9 @@ Revision history for Perl extension CGI::Widget.
 0.10  Added AUTOLOAD support from CGI::Widget for CGI::Widget subclasses.
 0.11  Added an HList subclass, loosely based on Tk::HList, and drawing heavily
       from the Tree::DAG_Node class.
+0.12  Subclasses of subclasses can now be autoloaded using double-underscore
+      notation (when using :standard).  For instance, constructing CGI::Widget::Series
+      requires a Series() call, and constructing CGI::Widget::HList::Node requires
+      a HList__Node() call.
+
+      Added on-the-fly constructors for the html() methods in Series and HList

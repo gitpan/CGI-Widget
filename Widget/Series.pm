@@ -7,7 +7,7 @@ use strict;
 use overload '""' => \&html;
 
 @ISA = qw(CGI::Widget);
-$VERSION = '1.00';
+$VERSION = '1.01';
 
 
 sub _init {
@@ -30,7 +30,14 @@ sub _init {
 }
 
 sub html {
-  my $self = shift;
+  my ($self,@args) = @_;
+
+  #nice one from Slaven Rezic
+  unless(ref $self){
+    unshift @args,$self;
+    $self = __PACKAGE__->new(@args) unless ref $self;
+  }
+
   my $return = '';
   for my $i (1..$self->length){
 	  $return .= $self->render->($i);

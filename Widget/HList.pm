@@ -10,7 +10,7 @@ use strict;
 use overload '""' => \&ashtml;
 
 @ISA = qw(CGI::Widget);
-$VERSION = '0.50';
+$VERSION = '0.51';
 
 sub _init {
   my $self = shift;
@@ -77,7 +77,12 @@ sub node {
 }
 
 sub html {
-		return shift->ashtml(@_);
+		my ($self,@args) = @_;
+		unless(ref $self){
+			unshift @args,$self;
+			$self = __PACKAGE__->new(@args) unless ref $self;
+		}
+		return $self->ashtml(@_);
 }
 
 sub ashtml {
