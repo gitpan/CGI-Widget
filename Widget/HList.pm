@@ -2,7 +2,7 @@ package CGI::Widget::HList;
 
 use lib '../blib/lib';
 use Tree::DAG_Node;
-use CGI qw(:standard);
+use CGI qw(img br);
 use CGI::Widget;
 use CGI::Widget::HList::Node;
 use vars qw(@ISA $VERSION);
@@ -10,7 +10,7 @@ use strict;
 use overload '""' => \&ashtml;
 
 @ISA = qw(CGI::Widget);
-$VERSION = '0.51';
+$VERSION = '0.53';
 
 sub _init {
   my $self = shift;
@@ -20,24 +20,24 @@ sub _init {
   for(my $i = 0; $i < @t; $i+=2){ $t[$i] =~ s/^-//; }
   my %param = @t;
 
-  $self->img_open(  $param{img_open}         || img({-src=>'../images/menu_open.gif'})       ); #-
-  $self->img_close( $param{img_close}        || img({-src=>'../images/menu_close.gif'})      ); #+
-  $self->img_leaf(  $param{img_leaf}         || img({-src=>'../images/menu_leaf.gif'})       ); #O
-  $self->img_spacer($param{img_spacer}       || img({-src=>'../images/menu_space.gif'})      ); #_ 
-  $self->img_trunk( $param{img_trunk}        || img({-src=>'../images/menu_trunk.gif'})      ); #|
-  $self->img_branch($param{img_branch}       || img({-src=>'../images/menu_branch.gif'})     ); #=
-  $self->img_corner($param{img_corner}       || img({-src=>'../images/menu_corner.gif'})     ); #L
+  $self->img_open(  $param{img_open}   || img({-src=>'../images/menu_open.gif',-border=>0}));  #-
+  $self->img_close( $param{img_close}  || img({-src=>'../images/menu_close.gif',-border=>0})); #+
+  $self->img_leaf(  $param{img_leaf}   || img({-src=>'../images/menu_leaf.gif',-border=>0}));  #O
+  $self->img_spacer($param{img_spacer} || img({-src=>'../images/menu_space.gif',-border=>0})); #_
+  $self->img_trunk( $param{img_trunk}  || img({-src=>'../images/menu_trunk.gif',-border=>0})); #|
+  $self->img_branch($param{img_branch} || img({-src=>'../images/menu_branch.gif',-border=>0}));#=
+  $self->img_corner($param{img_corner} || img({-src=>'../images/menu_corner.gif',-border=>0}));#L
 
   #open, close, and leaf are all a type of node
   $self->render_node(  $param{render_node}   || 
 											 sub{
 													 my $node = shift;
-													 $node->pregnant  ?     return $self->img_close  : #node has potential for daughters
+													 $node->pregnant  ?     return $self->img_close  :
 													 $node->state     ? 
-															 $node->daughters ? return $self->img_open     #node is open
-																	              : return $self->img_leaf   : #node is daughterless
-															 $node->daughters ? return $self->img_close  : #node is closed
-															                    return $self->img_leaf   ; #node is daughterless
+															 $node->daughters ? return $self->img_open
+																	              : return $self->img_leaf   :
+															 $node->daughters ? return $self->img_close  :	
+ 															                    return $self->img_leaf   ;
 											 }
 										);
 
@@ -207,6 +207,8 @@ see L<CGI::Widget::HList::Node>.
 This module is where image configurations, node rendering, 
 and connector rendering methods are stored in the form of 
 callbacks.
+
+Check ex/ for example scripts
 
 =head2 Constuctors
 

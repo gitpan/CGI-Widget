@@ -4,7 +4,7 @@ use strict;
 use vars qw(@ISA @EXPORT_OK %EXPORT_TAGS $VERSION $AUTOLOAD);
 #use vars qw($VERSION $AUTOLOAD);
 
-$VERSION = '0.14';
+$VERSION = '0.15';
 
 require Exporter;
 @ISA = 'Exporter';

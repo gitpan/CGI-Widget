@@ -5,7 +5,7 @@ use vars qw(@ISA $VERSION);
 use strict;
 
 @ISA = qw(Tree::DAG_Node);
-$VERSION = '0.50';
+$VERSION = '0.51';
 
 sub close {
   my $self = shift;
@@ -81,7 +81,9 @@ sub dump_names {
 
 					#other columns
 					else {
-							push @spacer, $ancestors[$index+1]->right_sister ? $o->{trunk}->() : $o->{spacer}->();
+							push @spacer, $ancestors[$index+1]->right_sister ? 
+								$o->{trunk}->() : 
+								$o->{spacer}->();
 					}
 					$index++;
 			}

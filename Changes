@@ -1,5 +1,8 @@
 Revision history for Perl extension CGI::Widget.
 
+0.15  Small trimming of HList and ilk.
+0.14  Documentation change to reflect Tree::DAG_Node requirement for HList and
+      ilk.  HList.t changed to test for this dependency.
 0.13  AUTOLOAD is now dynamically selected when CGI::Widget is used as
       an Exporter.  Added HList/Node.pm to the distribution, which was missing
       from v0.12.
