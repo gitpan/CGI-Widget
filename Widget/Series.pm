@@ -4,21 +4,20 @@ use lib '../';
 use CGI::Widget;
 use vars qw(@ISA $VERSION);
 use strict;
-use warnings;
 use overload '""' => \&asString;
 
-our @ISA = qw(CGI::Widget);
-our $VERSION = '0.01';
+@ISA = qw(CGI::Widget);
+$VERSION = '1.00';
 
-#<input type="image" name="zoom1" src="/buttons/zoom/green1.gif" alt="show 500 bp" title="show 500 bp" border="0">
 
 sub _init {
   my $self = shift;
 
   #clean out leading -'s;
-  for(my $i = 0; $i < @_; $i+=2){ $_[$i] =~ s/^-//; }
+  my @t = @_;
+  for(my $i = 0; $i < @t; $i+=2){ $t[$i] =~ s/^-//; }
 
-  my %param = @_;
+  my %param = @t;
 
   $param{break} ||= 0;
   $param{linebreak} ||= 0;

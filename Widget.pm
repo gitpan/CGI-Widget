@@ -1,12 +1,12 @@
 package CGI::Widget;
 
 use strict;
-use warnings;
+use vars qw($VERSION);
 use overload
  '""'     => \&asString,
  fallback => 1;
 
-our $VERSION = '0.01';
+$VERSION = '0.05';
 
 sub new {
   my $class = shift;
