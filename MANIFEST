@@ -6,4 +6,5 @@ Widget.pm
 Widget/Series.pm
 t/t.t
 t/test.pl
+t/test_autoload.pl
 t/green.gif
