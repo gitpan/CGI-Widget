@@ -6,3 +6,5 @@ Revision history for Perl extension CGI::Widget.
 
 0.05  0.01 didn't build under perl 5.005_03.
 0.10  Added AUTOLOAD support from CGI::Widget for CGI::Widget subclasses.
+0.11  Added an HList subclass, loosely based on Tk::HList, and drawing heavily
+      from the Tree::DAG_Node class.

@@ -8,13 +8,9 @@ use overload
  '""'     => \&asString,
  fallback => 1;
 
-$VERSION = '0.10';
+$VERSION = '0.11';
 @EXPORT_OK   = qw(AUTOLOAD);
 %EXPORT_TAGS = ( 'standard' => [qw(AUTOLOAD)] );
-
-sub asdf {
-  return "foobar";
-}
 
 sub new {
   my $class = shift;
@@ -29,6 +25,8 @@ sub AUTOLOAD {
   eval "require $req" || die "couldn't find $req : $!";
   return $req->new(@_);
 }
+
+sub DESTROY {}
 
 sub _init {
   my $self = shift;

@@ -4,7 +4,7 @@ use lib '../';
 use CGI::Widget;
 use vars qw(@ISA $VERSION);
 use strict;
-use overload '""' => \&asString;
+use overload '""' => \&html;
 
 @ISA = qw(CGI::Widget);
 $VERSION = '1.00';
@@ -12,11 +12,11 @@ $VERSION = '1.00';
 
 sub _init {
   my $self = shift;
-
   #clean out leading -'s;
   my @t = @_;
-  for(my $i = 0; $i < @t; $i+=2){ $t[$i] =~ s/^-//; }
 
+
+  for(my $i = 0; $i < @t; $i+=2){ $t[$i] =~ s/^-//; }
   my %param = @t;
 
   $param{break} ||= 0;
@@ -29,7 +29,7 @@ sub _init {
   return 1;
 }
 
-sub asString {
+sub html {
   my $self = shift;
   my $return = '';
   for my $i (1..$self->length){
@@ -106,7 +106,9 @@ new() accepts the following parameters:
 =head2 Methods
 
 Interpreted in a scalar context, the object is overloaded to return 
-the html for the series.  Easy!
+the html for the series.  Easy!  
+
+html() can also be called to produce the series html.
 
 The remainder of the methods are of the same name as the parameter
 passed to new(), minus the optional leading dash.  They are 
